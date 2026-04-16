@@ -1,0 +1,187 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: pruebaDatasoft
+meta:
+  id: wrk_681b9f74c9bc4fe69a4ee4443cdaf77d
+  created: 1776325778905
+  modified: 1776325778905
+  description: ""
+collection:
+  - url: "{{ _.base_url }}/login"
+    name: Login
+    meta:
+      id: req_ds_login_001
+      created: 1776325900001
+      modified: 1776326729556
+      isPrivate: false
+      description: Obtiene un JWT usando el usuario de prueba admin/admin123.
+      sortKey: -1776325900001
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "username": "admin",
+          "password": "admin123"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/genres"
+    name: Listar generos
+    meta:
+      id: req_ds_genres_001
+      created: 1776325900002
+      modified: 1776325900002
+      isPrivate: false
+      description: Endpoint publico para listar todos los generos.
+      sortKey: -1776325900002
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/books"
+    name: Listar libros
+    meta:
+      id: req_ds_books_all_001
+      created: 1776325900003
+      modified: 1776325900003
+      isPrivate: false
+      description: Endpoint publico para listar todos los libros.
+      sortKey: -1776325900003
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/books"
+    name: Listar libros por genero
+    meta:
+      id: req_ds_books_by_genre_001
+      created: 1776325900004
+      modified: 1776325900004
+      isPrivate: false
+      description: Filtra libros por el parametro genreId.
+      sortKey: -1776325900004
+    method: GET
+    parameters:
+      - name: genreId
+        value: "{{ _.genre_id }}"
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/books/{{ _.book_id }}"
+    name: Detalle de libro
+    meta:
+      id: req_ds_book_detail_001
+      created: 1776325900005
+      modified: 1776325900005
+      isPrivate: false
+      description: Endpoint protegido. Pegar el token JWT en la variable token del ambiente.
+      sortKey: -1776325900005
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/books/{{ _.book_id }}"
+    name: Actualizar libro
+    meta:
+      id: req_ds_book_update_001
+      created: 1776325900006
+      modified: 1776325900006
+      isPrivate: false
+      description: Endpoint protegido. Pegar el token JWT en la variable token del ambiente.
+      sortKey: -1776325900006
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "title": "Clean Code",
+          "author": "Robert C. Martin",
+          "isbn": "9780132350884",
+          "description": "Buenas practicas para escribir codigo mantenible.",
+          "publishedYear": 2008,
+          "price": 45.99,
+          "genreId": {{ _.genre_id }}
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_9a3f950ade9dcd6cc8b2e122f50b18fb1952be54
+    created: 1776325778910
+    modified: 1776325778910
+environments:
+  name: Base Environment
+  meta:
+    id: env_9a3f950ade9dcd6cc8b2e122f50b18fb1952be54
+    created: 1776325778909
+    modified: 1776325900000
+    isPrivate: false
+  data:
+    base_url: http://localhost:8080
+    token: ""
+    book_id: "1"
+    genre_id: "1"
