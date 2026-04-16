@@ -10,3 +10,6 @@ Prueba tecnica fullstack datasoft
 
 - Backend: `backendDS/README.md`
 - Frontend: `frontendDS/README.md`
+
+## Video
+https://www.loom.com/share/4560b11524614738b65277faf5689837
