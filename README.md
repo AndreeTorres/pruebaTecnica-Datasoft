@@ -4,6 +4,9 @@ Prueba tecnica fullstack datasoft
 ## Proyectos
 
 - `backendDS`: API REST en Spring Boot con PostgreSQL en Docker, JPA y JWT.
-- `frontendDS`: carpeta reservada para el frontend.
+- `frontendDS`: aplicacion React con login, listado de libros, filtro por genero y detalle de libro.
 
-La documentacion tecnica del backend esta en `backendDS/README.md`.
+## Documentacion
+
+- Backend: `backendDS/README.md`
+- Frontend: `frontendDS/README.md`
